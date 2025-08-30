@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumière | 高端珠宝首饰品牌</title>
+    <style>
+        :root {
+            --primary-color: #D4AF37;
+            /* 金色作为主色调 */
+            --primary-light: #f0e1b9;
+            --secondary-color: #1A1A1A;
+            /* 深黑色作为辅助色 */
+            --light-color: #F8F8F8;
+            /* 浅色背景 */
+            --dark-color: #333333;
+            /* 深色文本 */
+            --gray-color: #777;
+            --white-color: #fff;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--dark-color);
+            background-color: var(--white-color);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 300;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background: var(--primary-color);
+            color: var(--white-color);
+        }
+
+        .btn-dark {
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        .btn-dark:hover {
+            background: var(--secondary-color);
+            color: var(--white-color);
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 20px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 1px;
+            background: var(--primary-color);
+        }
+
+        /* 导航栏样式 */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            padding: 25px 0;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--white-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled .logo {
+            color: var(--secondary-color);
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+        }
+
+        .nav-item {
+            margin-left: 40px;
+        }
+
+        .nav-link {
+            color: var(--white-color);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .navbar.scrolled .nav-link {
+            color: var(--secondary-color);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--white-color);
+            margin: 5px 0;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled .menu-toggle span {
+            background: var(--secondary-color);
+        }
+
+        /* 英雄区域样式 */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white-color);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://picsum.photos/id/1048/1920/1080') center/cover no-repeat;
+            z-index: -1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        /* 精选系列样式 */
+        .collections {
+            background: var(--light-color);
+        }
+
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .collection-item {
+            position: relative;
+            overflow: hidden;
+            height: 500px;
+        }
+
+        .collection-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .collection-item:hover .collection-img {
+            transform: scale(1.05);
+        }
+
+        .collection-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: var(--white-color);
+        }
+
+        .collection-overlay h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* 品牌故事样式 */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-img {
+            position: relative;
+        }
+
+        .about-img::after {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--primary-color);
+            z-index: -1;
+        }
+
+        .about-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            margin-bottom: 30px;
+            color: var(--gray-color);
+        }
+
+        /* 产品展示样式 */
+        .products {
+            background: var(--light-color);
+        }
+
+        .product-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: none;
+            padding: 8px 20px;
+            margin: 0 10px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            color: var(--dark-color);
+        }
+
+        .filter-btn.active {
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--primary-color);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-item {
+            background: var(--white-color);
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .product-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-img {
+            height: 300px;
+            object-fit: contain;
+            margin: 0 auto 20px;
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        /* 工艺展示样式 */
+        .craftsmanship {
+            position: relative;
+            color: var(--white-color);
+            text-align: center;
+            padding: 150px 0;
+        }
+
+        .craftsmanship::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://picsum.photos/id/1059/1920/1080') center/cover no-repeat;
+            z-index: -1;
+        }
+
+        .craftsmanship::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+
+        .craftsmanship-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .craftsmanship h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .craftsmanship p {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        /* 客户评价样式 */
+        .testimonials {
+            background: var(--white-color);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .testimonial-item {
+            text-align: center;
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--gray-color);
+        }
+
+        .testimonial-name {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-rating {
+            color: var(--primary-color);
+        }
+
+        /* 联系我们样式 */
+        .contact {
+            background: var(--light-color);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            color: var(--primary-color);
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        .contact-details h4 {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .contact-details p {
+            color: var(--gray-color);
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-label {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .form-input,
+        .form-textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            background: var(--white-color);
+            transition: var(--transition);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        /* 页脚样式 */
+        footer {
+            background: var(--secondary-color);
+            color: var(--white-color);
+            padding: 80px 0 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo span {
+            color: var(--primary-color);
+        }
+
+        .footer-desc {
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 1px;
+            background: var(--primary-color);
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid #333;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+
+            .about,
+            .contact {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: var(--secondary-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+                z-index: 1001;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-item {
+                margin: 20px 0;
+            }
+
+            .nav-link {
+                color: var(--white-color);
+                font-size: 1.2rem;
+            }
+
+            .menu-toggle {
+                display: block;
+                z-index: 1002;
+            }
+
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+
+            .section-title h2,
+            .craftsmanship h2 {
+                font-size: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 13px;
+            }
+
+            .section-title h2,
+            .craftsmanship h2 {
+                font-size: 1.8rem;
+            }
+
+            .collection-item {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">Lumière<span>Jewels</span></a>
+
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link">首页</a></li>
+                <li class="nav-item"><a href="#collections" class="nav-link">精选系列</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">品牌故事</a></li>
+                <li class="nav-item"><a href="#products" class="nav-link">产品展示</a></li>
+                <li class="nav-item"><a href="#testimonials" class="nav-link">客户评价</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">联系我们</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>璀璨珠宝，永恒之美</h1>
+            <p>每一件珠宝都讲述着独特的故事，见证生命中珍贵的时刻</p>
+            <a href="#collections" class="btn">探索系列</a>
+        </div>
+    </section>
+
+    <!-- 精选系列 -->
+    <section class="collections" id="collections">
+        <div class="container">
+            <div class="section-title">
+                <h2>精选系列</h2>
+            </div>
+
+            <div class="collection-grid">
+                <div class="collection-item">
+                    <img src="https://picsum.photos/id/152/800/1000" alt="钻石系列珠宝" class="collection-img">
+                    <div class="collection-overlay">
+                        <h3>永恒钻石系列</h3>
+                        <p>纯净剔透，象征永恒不变的爱</p>
+                        <a href="#" class="btn btn-dark">探索</a>
+                    </div>
+                </div>
+
+                <div class="collection-item">
+                    <img src="https://picsum.photos/id/118/800/1000" alt="珍珠系列珠宝" class="collection-img">
+                    <div class="collection-overlay">
+                        <h3>海洋珍珠系列</h3>
+                        <p>温润优雅，彰显高贵气质</p>
+                        <a href="#" class="btn btn-dark">探索</a>
+                    </div>
+                </div>
+
+                <div class="collection-item">
+                    <img src="https://picsum.photos/id/131/800/1000" alt="宝石系列珠宝" class="collection-img">
+                    <div class="collection-overlay">
+                        <h3>彩宝臻选系列</h3>
+                        <p>绚丽多彩，绽放独特魅力</p>
+                        <a href="#" class="btn btn-dark">探索</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 品牌故事 -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-img">
+                <img src="https://picsum.photos/id/1040/800/1000" alt="珠宝制作工艺展示">
+            </div>
+
+            <div class="about-content">
+                <div class="section-title" style="text-align: left;">
+                    <h2>品牌故事</h2>
+                </div>
+                <h3>传承百年工艺，缔造永恒经典</h3>
+                <p>Lumière 创立于1920年，由著名珠宝设计师 Jean Lumière 在巴黎创立。近百年来，我们始终坚持以精湛工艺和独特设计为核心，将每一颗宝石的天然之美与人文艺术完美融合。</p>
+                <p>我们的设计师团队来自世界各地，他们将多元文化元素融入珠宝设计，创造出既富有传统韵味又兼具现代气息的经典作品。每一件Lumière珠宝都经过严格的选材和精心的制作，确保品质卓越。</p>
+                <a href="#" class="btn">了解更多</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品展示 -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>精选产品</h2>
+            </div>
+
+            <div class="product-filter">
+                <button class="filter-btn active" data-filter="all">全部</button>
+                <button class="filter-btn" data-filter="rings">戒指</button>
+                <button class="filter-btn" data-filter="necklaces">项链</button>
+                <button class="filter-btn" data-filter="earrings">耳环</button>
+                <button class="filter-btn" data-filter="bracelets">手镯</button>
+            </div>
+
+            <div class="product-grid">
+                <div class="product-item" data-category="rings">
+                    <img src="https://picsum.photos/id/152/600/800" alt="钻石戒指" class="product-img">
+                    <h3 class="product-name">星光钻戒</h3>
+                    <p class="product-price">¥12,800</p>
+                    <a href="#" class="btn">查看详情</a>
+                </div>
+
+                <div class="product-item" data-category="necklaces">
+                    <img src="https://picsum.photos/id/118/600/800" alt="珍珠项链" class="product-img">
+                    <h3 class="product-name">海洋之泪项链</h3>
+                    <p class="product-price">¥8,600</p>
+                    <a href="#" class="btn">查看详情</a>
+                </div>
+
+                <div class="product-item" data-category="earrings">
+                    <img src="https://picsum.photos/id/131/600/800" alt="宝石耳环" class="product-img">
+                    <h3 class="product-name">彩宝耳钉</h3>
+                    <p class="product-price">¥5,200</p>
+                    <a href="#" class="btn">查看详情</a>
+                </div>
+
+                <div class="product-item" data-category="bracelets">
+                    <img src="https://picsum.photos/id/145/600/800" alt="钻石手镯" class="product-img">
+                    <h3 class="product-name">璀璨手链</h3>
+                    <p class="product-price">¥9,800</p>
+                    <a href="#" class="btn">查看详情</a>
+                </div>
+
+                <div class="product-item" data-category="rings">
+                    <img src="https://picsum.photos/id/158/600/800" alt="蓝宝石戒指" class="product-img">
+                    <h3 class="product-name">深海蓝宝戒指</h3>
+                    <p class="product-price">¥15,600</p>
+                    <a href="#" class="btn">查看详情</a>
+                </div>
+
+                <div class="product-item" data-category="necklaces">
+                    <img src="https://picsum.photos/id/160/600/800" alt="钻石项链" class="product-img">
+                    <h3 class="product-name">流星项链</h3>
+                    <p class="product-price">¥11,200</p>
+                    <a href="#" class="btn">查看详情</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 工艺展示 -->
+    <section class="craftsmanship">
+        <div class="container">
+            <div class="craftsmanship-content">
+                <h2>精湛工艺，匠心独运</h2>
+                <p>每一件Lumière珠宝都凝聚了匠人数十年的工艺积累，从设计草图到成品诞生，历经数十道工序，每一步都精益求精，只为呈现最完美的作品。</p>
+                <a href="#" class="btn">探索工艺</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 客户评价 -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>客户评价</h2>
+            </div>
+
+            <div class="testimonial-grid">
+                <div class="testimonial-item">
+                    <img src="https://picsum.photos/id/64/200/200" alt="客户照片" class="testimonial-img">
+                    <p class="testimonial-text">"Lumière的珠宝不仅设计精美，而且品质卓越。我购买的订婚戒指已经佩戴了5年，依然如新，每次看到都让我心动不已。"</p>
+                    <h4 class="testimonial-name">陈女士</h4>
+                    <div class="testimonial-rating">★★★★★</div>
+                </div>
+
+                <div class="testimonial-item">
+                    <img src="https://picsum.photos/id/91/200/200" alt="客户照片" class="testimonial-img">
+                    <p class="testimonial-text">"作为礼物送给妻子的周年纪念项链，她非常喜欢。Lumière的服务也很贴心，包装精美，还提供了定制刻字服务。"</p>
+                    <h4 class="testimonial-name">王先生</h4>
+                    <div class="testimonial-rating">★★★★★</div>
+                </div>
+
+                <div class="testimonial-item">
+                    <img src="https://picsum.photos/id/26/200/200" alt="客户照片" class="testimonial-img">
+                    <p class="testimonial-text">"收藏了多件Lumière的珠宝，每一件都独具特色。他们的设计师总能将经典与现代完美结合，展现出珠宝的独特魅力。"</p>
+                    <h4 class="testimonial-name">李女士</h4>
+                    <div class="testimonial-rating">★★★★★</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-info">
+                <div class="section-title" style="text-align: left;">
+                    <h2>联系我们</h2>
+                </div>
+                <h3>欢迎咨询，我们将竭诚为您服务</h3>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <h4>地址</h4>
+                        <p>上海市南京西路1266号恒隆广场45层</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <h4>电话</h4>
+                        <p>400-888-9999</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <polyline points="3 9 12 15 21 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <h4>邮箱</h4>
+                        <p>info@lumiere-jewels.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <h4>营业时间</h4>
+                        <p>周一至周日 10:00 - 22:00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">Lumière<span>Jewels</span></div>
+                    <p class="footer-desc">传承百年工艺，缔造永恒经典。每一件珠宝都讲述着独特的故事。</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links-container">
+                    <h4 class="footer-title">快速链接</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#collections">精选系列</a></li>
+                        <li><a href="#about">品牌故事</a></li>
+                        <li><a href="#products">产品展示</a></li>
+                        <li><a href="#contact">联系我们</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-container">
+                    <h4 class="footer-title">客户服务</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">购物指南</a></li>
+                        <li><a href="#">支付方式</a></li>
+                        <li><a href="#">配送信息</a></li>
+                        <li><a href="#">退换政策</a></li>
+                        <li><a href="#">常见问题</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-container">
+                    <h4 class="footer-title">关于我们</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">品牌历史</a></li>
+                        <li><a href="#">工艺展示</a></li>
+                        <li><a href="#">门店地址</a></li>
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2023 Lumière Jewels. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // 关闭移动菜单（如果打开）
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // 产品筛选功能
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const productItems = document.querySelectorAll('.product-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // 移除所有按钮的active类
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // 给当前点击的按钮添加active类
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+
+                productItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
